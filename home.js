@@ -1,4 +1,4 @@
-function ResizeImage() {
+function resizeImage() {
   var filesToUpload = document.getElementById('imageFile').files;
   var file = filesToUpload[0];
 
@@ -11,7 +11,6 @@ function ResizeImage() {
           img.src = e.target.result;
 
           var canvas = document.createElement("canvas");
-          //var canvas = $("<canvas>", {"id":"testing"})[0];
           var ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0);
 
@@ -20,6 +19,7 @@ function ResizeImage() {
           var width = img.width;
           var height = img.height;
 
+          // set proper ratio of width to height using maximums
           if (width > height) {
               if (width > MAX_WIDTH) {
                   height *= MAX_WIDTH / width;
