@@ -2,12 +2,15 @@ window.onload = setup;
 
 function setup() {
     // attach click handler to imageResizer input
-    document.getElementById("imageResizer").addEventListener("click", retrieveImageInput);
+    document.getElementById("imageResizer").addEventListener("click", resizeImage);
 }
 
-function retrieveImageInput() {
+function resizeImage() {
     let file = getImageFile();
-    readImageFile(file);
+    let imageReader = createImageReader(file);
+
+    // Set the image once loaded into file reader
+    imageReader.onload = (e) => createNewImage(e);
 }
 
 function getImageFile() {
@@ -16,12 +19,11 @@ function getImageFile() {
     return file;
 }
 
-function readImageFile(imageFile) {
+function createImageReader(imageFile) {
     var reader = new FileReader();
     reader.readAsDataURL(imageFile);
 
-    // Set the image once loaded into file reader
-    reader.onload = (e) => createNewImage(e);
+    return reader;
 }
 
 function createNewImage(e) {
