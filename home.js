@@ -47,8 +47,6 @@ function createNewImage(e) {
 
 function drawAndResizeCanvas(img) {
     canvas = this;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
 
     var MAX_WIDTH = 100;
     var MAX_HEIGHT = 100;
